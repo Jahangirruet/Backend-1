@@ -1,46 +1,14 @@
 import express from 'express'
 const app = express();
-import connectDB from "./db/db.js";
-// import {app} from './app.js'
-
-
+import connectDB from "./models/db.js";
+const port = 8080;
 
 connectDB()
 .then(() => {
-    app.listen(process.env.PORT || 8000, () => {
-        console.log(`⚙️ Server is running at port : ${process.env.PORT}`);
+    app.listen(port, () => {
+        console.log(`⚙️ Server is running at port : ${port}`);
     })
 })
 .catch((err) => {
-    console.log("MONGO db connection failed !!! ", err);
+    console.log(" db connection failed !!! ", err);
 })
-
-
-// const port = process.env.PORT || 8000;
-
-// var mysql = require("mysql");
-
-// var connection = mysql.createConnection({
-//   host: "localhost",
-//   user: "root",
-//   password: "",
-//   database: "mydb",
-// });
-
-
-// try {
-//   connection.connect();
-
-//   var sql = "INSERT INTO customers (name, address) VALUES ('Company Inc', 'Highway 37')";
-
-//   connection.query(sql, (err, rows, fields) => {
-//     if (err) throw err;
-
-//     console.log("1 record inserted");
-//   });
-
-//   connection.end();
-// } catch (error) {
-//   console.log("error", error);
-//   throw error;
-// }
